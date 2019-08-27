@@ -18,6 +18,18 @@
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
 </div>
+<div>
+  <ul>
+    <ng-container *ngFor="let pais of paises; let i = index" [ngSwitch]="pais.cercano">
+      <li [ngStyle]="{color: (pais.activo) ? 'black' : 'gray'}" [ngClass]="{numero_par: ( i + 1 ) % 2 !== 0}">
+        {{pais.nombre}} -
+        <span *ngSwitchCase=1>Cerca</span>
+        <span *ngSwitchCase=2>Lejos</span>
+        <span *ngSwitchCase=3>Muy Lejos</span>
+      </li>
+    </ng-container>
+  </ul>
+</div>
 <ul>
   <li>
     <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
